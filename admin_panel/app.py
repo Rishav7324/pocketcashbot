@@ -21,7 +21,7 @@ login_manager.login_message_category = 'info'
 try:
     scope = ["https://spreadsheets.google.com/feeds", 'https://www.googleapis.com/auth/spreadsheets',
              "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_name("client_secret.json", scope)
+    creds = ServiceAccountCredentials.from_json_keyfile_name("tenant-3c5c7-167f5774acd0.json", scope)
     client = gspread.authorize(creds)
     user_sheet = client.open("PocketCashBotDB").worksheet("Users")
     print("Google Sheets connected successfully for Admin Panel.")
@@ -260,6 +260,7 @@ def manage_settings():
             settings = get_settings()
             settings['min_withdrawal'] = int(request.form['min_withdrawal'])
             settings['referral_bonus'] = int(request.form['referral_bonus'])
+            settings['referral_system_enabled'] = True if request.form.get('referral_system_enabled') == 'on' else False
             save_settings(settings)
             flash('Settings updated successfully!', 'success')
             
@@ -267,6 +268,44 @@ def manage_settings():
 
     settings = get_settings()
     return render_template('settings.html', settings=settings)
+
+# --- Referral Tree ---
+@app.route('/referral-tree')
+@login_required
+def referral_tree():
+    if not user_sheet:
+        flash('Google Sheets not connected.', 'danger')
+        return render_template('referral_tree.html', tree={})
+
+    try:
+        users = user_sheet.get_all_records()
+        
+        # Create a dictionary of users for easy lookup
+        users_by_id = {str(u['UserID']): u for u in users}
+        
+        # Build the tree
+        tree = {}
+        for user_id, user_data in users_by_id.items():
+            user_data['children'] = []
+            parent_id = str(user_data.get('InvitedBy'))
+            
+            if parent_id and parent_id in users_by_id:
+                # This is a hacky way to append to a list within a dict
+                # A proper DB would be better.
+                parent = users_by_id[parent_id]
+                if 'children' not in parent:
+                    parent['children'] = []
+                parent['children'].append(user_data)
+            else:
+                # This is a root node (no referrer or invalid referrer)
+                tree[user_id] = user_data
+
+    except Exception as e:
+        flash(f'An error occurred while building the tree: {e}', 'danger')
+        tree = {}
+
+    return render_template('referral_tree.html', tree=tree)
+
 
 # --- Broadcast System ---
 @app.route('/broadcast', methods=['GET', 'POST'])

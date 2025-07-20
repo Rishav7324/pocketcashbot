@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "tenant-3c5c7",
+  "private_key_id": "167f5774acd07cda9387f58ea07675049bb4b26f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCNZ2CQzGuQFHRj\ntiZENEq0yveANZPgemvCfcO9WePcLs/oFxu2CDIRbkkkZ7Z3/PaO4z11Ek1ia8/S\nDZ5zE8RaJy420OTgw/OE/ijvM9rNf1D/1p9wTQ5nM3e1ICluvexmTjWpRZRl/V/l\nRS5/ADl0vg1VP6peDdTUjL5LdspV2XL6EZOsR00oFF5SwxGbhy4s+GGZgoy0L5fV\nPVobMGH/HYsatSMctp6U23kAP1nh09Avv8va3kLk/bgLLLFrIqX+2vp96pF9Eevm\n0rO0RNxrf+7jQMrEgfmgK4Hteg6weTCUCQwILeF1CCpj8jxEuubtyaI3WsJVcmYa\nBHGW9SP1AgMBAAECggEAMIXN7EJJktqCCgliXjs3e4y+m59HDFvWCJqRhbOH7nGd\n5H2xg6iSTcrzjGuOgOQsU2IFH9xU87YdTW5g9gpNccZKJINQVxTGxtdUgqjfp27O\nA8zJT4cRrzZJGL1dmmPP8FdcMKbwwoLM2mcACpKwJLBm8N70/mtuojVdw5WS3xxJ\nqFh0ZBy+EiFsK5nEKKdKQqrdLD1Vg6bebzmHvcfqtGvgE3gE8DO4jXXvRJwNN6OB\nRRpn8ao9BlDNhnJGby9zm0kv+54q0NRWctt7Phr9uCB6Sae5/BBDhqYjohBKXqlc\nPKmxmoSZDAF0Tw5shgg9k9dCl1vVngScPpD0ZiX2LQKBgQDDmNaAZ+kYXRHs94sX\ndv/2FMv8Qn/GUhhU23I9boZsGF44MiJaqfKyVmudiQxxyHhIwbyfn33RMjS5Bz3v\nXvKuR77YYOtHz2s/KSE7a0UiAc29jC+ilO434JMQm8VKGovL0O79mdYr/nK4tXYO\nRp7xFRx72svVORi6WdEUdLAg0wKBgQC5EjqlTCoACFwycLj26prJvqovAYn3YJKQ\npKtOrY5CZMEd5HCsgtTC90BYp0dI6BIhWS8/oNtu7QkhuGgMgx8w4qo3krXtuUWP\ncCOqmq7iuzio0XL9UY26c+OATwgrMhZLjDk1pOxnLFApVan09PWuvr84v/+Td/X4\n/Bj3Wq5rFwKBgQCmYOTdVwZlLg3od2z+acAyz9/wVZSg2wZNcFmNve1kF5pVzPeC\nDZwfbPmfiItoYjFHGl1bnmyEvWMxnOJnMmnWK7tADbk1XU+J62+UPpwQ4F3lBVEj\nx/GW4FXYw9gfP9N4bOJOIESZKZjmW5zvac0bn2yaQjQuzKGnKm16LAQB9wKBgHhL\nFv92QB6BUJwglLk5yJ61ZZzkHS9EAEAwKIEdYkhZgQTTBUG8UFrhp1t4b2c+IPq4\nI3PyNG8ndzYJzOfFGrMFwaoZnFMGh+Yx95zeqioJk0x3x4xMRBkbVpaByEd7aO52\nGIF7z4VIUlprqerkhgStS1GxyoeqA6FxCzFMKe7FAoGBAI7Izjs1bvPM4A5tjP3o\nt6r1BiR2dhW8sgQzltZHaFDuESysL/dUoGayx/oQZspkCKRnF+FTso/2DTUIQkOq\nHs56FnsmCkd/Po2zeNeQNEHPam1Nlz3abQu9+DarTQAn/rEcZ81Bkx8PHnjR3E7m\npzr7DX6XJ4AnyFvSTauaDFMp\n-----END PRIVATE KEY-----\n",
+  "client_email": "pocket-cash-pro@tenant-3c5c7.iam.gserviceaccount.com",
+  "client_id": "103524161117610099409",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/pocket-cash-pro%40tenant-3c5c7.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

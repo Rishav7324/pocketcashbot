@@ -13,6 +13,7 @@
             <ul class="nav-links">
                 {% if current_user.is_authenticated %}
                     <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('referral_tree') }}">Referral Tree</a></li>
                     <li><a href="{{ url_for('broadcast') }}">Broadcast</a></li>
                     <li><a href="{{ url_for('manage_settings') }}">Settings</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>

@@ -1,4 +1,5 @@
 {
     "min_withdrawal": 500,
-    "referral_bonus": 10
+    "referral_bonus": 10,
+    "referral_system_enabled": true
 }

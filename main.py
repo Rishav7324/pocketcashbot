@@ -41,7 +41,7 @@ bot = telebot.TeleBot(BOT_TOKEN)
 try:
     scope = ["https://spreadsheets.google.com/feeds", 'https://www.googleapis.com/auth/spreadsheets',
              "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_name("client_secret.json", scope)
+    creds = ServiceAccountCredentials.from_json_keyfile_name("tenant-3c5c7-167f5774acd0.json", scope)
     client = gspread.authorize(creds)
     db = client.open("PocketCashBotDB")
     user_sheet = db.worksheet("Users")
@@ -120,7 +120,8 @@ def send_welcome(message):
                 bot.send_message(ADMIN_ID, admin_message)
 
                 # Process referral
-                if referrer_id:
+                settings = get_settings()
+                if referrer_id and settings.get('referral_system_enabled', True):
                     referrer_cell = user_sheet.find(referrer_id)
                     if referrer_cell:
                         # Update referrer's balance
