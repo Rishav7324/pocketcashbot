@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Broadcast Message - Admin Panel{% endblock %}
+
+{% block content %}
+    <div class="form-container">
+        <h2>Send Broadcast Message</h2>
+        <p>This message will be sent to all users in the selected group.</p>
+        
+        <form method="POST" action="{{ url_for('broadcast') }}">
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="target_group">Target Group</label>
+                <select id="target_group" name="target_group" required>
+                    <option value="all">All Users</option>
+                    <option value="active">Active Users</option>
+                    <option value="blocked">Blocked Users</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn" onclick="return confirm('Are you sure you want to send this broadcast?');">Send Broadcast</button>
+        </form>
+    </div>
+{% endblock %}

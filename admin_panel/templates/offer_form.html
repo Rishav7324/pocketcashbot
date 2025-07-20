@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} - Admin Panel{% endblock %}
+
+{% block content %}
+    <div class="form-container">
+        <h2>{{ title }}</h2>
+        <form method="POST" action="">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" value="{{ offer.title if offer else '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="4" required>{{ offer.description if offer else '' }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="link">Target Link</label>
+                <input type="url" id="link" name="link" value="{{ offer.link if offer else '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <input type="text" id="category" name="category" value="{{ offer.category if offer else '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="reward">Reward (₹)</label>
+                <input type="number" step="0.01" id="reward" name="reward" value="{{ offer.reward if offer else '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" name="status" required>
+                    <option value="active" {% if offer and offer.status == 'active' %}selected{% endif %}>Active</option>
+                    <option value="inactive" {% if offer and offer.status == 'inactive' %}selected{% endif %}>Inactive</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Save Offer</button>
+        </form>
+    </div>
+{% endblock %}

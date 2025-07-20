@@ -2,3 +2,6 @@ pyTelegramBotAPI
 gspread
 oauth2client
 pandas
+Flask
+Flask-Bcrypt
+Flask-Login

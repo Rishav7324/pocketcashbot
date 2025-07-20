@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Admin Panel{% endblock %}
+
+{% block content %}
+    <div class="dashboard-header">
+        <h2>Welcome, {{ username }}!</h2>
+        <p>This is the admin dashboard for PocketCashBot. You can manage users, offers, and withdrawals from here.</p>
+    </div>
+
+    <div class="dashboard-widgets">
+        <div class="widget">
+            <h3>Users</h3>
+            <p>Manage all registered users.</p>
+            <a href="{{ url_for('manage_users') }}" class="btn">View Users</a>
+        </div>
+        <div class="widget">
+            <h3>Offers</h3>
+            <p>Add, edit, or remove earning offers.</p>
+            <a href="{{ url_for('manage_offers') }}" class="btn">Manage Offers</a>
+        </div>
+        <div class="widget">
+            <h3>Withdrawals</h3>
+            <p>View and process pending withdrawals.</p>
+            <a href="{{ url_for('manage_withdrawals') }}" class="btn">View Withdrawals</a>
+        </div>
+    </div>
+{% endblock %}

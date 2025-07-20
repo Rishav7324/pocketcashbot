@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Settings - Admin Panel{% endblock %}
+
+{% block content %}
+    <div class="settings-container">
+        
+        <!-- Change Password Form -->
+        <div class="form-container">
+            <h2>Change Admin Password</h2>
+            <form method="POST" action="{{ url_for('manage_settings') }}">
+                <div class="form-group">
+                    <label for="new_password">New Password</label>
+                    <input type="password" id="new_password" name="new_password" required minlength="6">
+                </div>
+                <button type="submit" class="btn">Update Password</button>
+            </form>
+        </div>
+
+        <!-- Global Bot Settings Form -->
+        <div class="form-container">
+            <h2>Global Bot Settings</h2>
+            <form method="POST" action="{{ url_for('manage_settings') }}">
+                <div class="form-group">
+                    <label for="min_withdrawal">Minimum Withdrawal Amount (₹)</label>
+                    <input type="number" id="min_withdrawal" name="min_withdrawal" value="{{ settings.min_withdrawal }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="referral_bonus">Referral Bonus (₹)</label>
+                    <input type="number" id="referral_bonus" name="referral_bonus" value="{{ settings.referral_bonus }}" required>
+                </div>
+                <button type="submit" class="btn">Save Settings</button>
+            </form>
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "title": "Open Demat Account",
+        "description": "Open a Demat Account and get a bonus.",
+        "link": "https://example.com/demat",
+        "category": "Demat",
+        "reward": 300,
+        "status": "active"
+    },
+    {
+        "id": 2,
+        "title": "Apply for Credit Card",
+        "description": "Apply for a new credit card and get a reward.",
+        "link": "https://example.com/creditcard",
+        "category": "Credit Card",
+        "reward": 500,
+        "status": "active"
+    },
+    {
+        "id": 3,
+        "title": "Buy Term Insurance",
+        "description": "Buy term insurance and get a cashback.",
+        "link": "https://example.com/insurance",
+        "category": "Insurance",
+        "reward": 400,
+        "status": "inactive"
+    }
+]

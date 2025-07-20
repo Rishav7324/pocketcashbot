@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Users - Admin Panel{% endblock %}
+
+{% block content %}
+    <div class="header-bar">
+        <h2>Manage Users</h2>
+        <a href="{{ url_for('export_users') }}" class="btn btn-secondary">Export as CSV</a>
+    </div>
+
+    <div class="search-container">
+        <form method="GET" action="{{ url_for('manage_users') }}">
+            <input type="text" name="search" placeholder="Search by UserID or Username..." value="{{ search_query or '' }}">
+            <button type="submit" class="btn">Search</button>
+        </form>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>UserID</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Join Date</th>
+                    <th>Balance (₹)</th>
+                    <th>Referrals</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.UserID }}</td>
+                    <td>{{ user.Name }}</td>
+                    <td>@{{ user.Username }}</td>
+                    <td>{{ user.JoinDate }}</td>
+                    <td>{{ user.Balance }}</td>
+                    <td>{{ user.ReferralCount }}</td>
+                    <td>
+                        <span class="status status-{{ user.Status.lower() if user.Status else 'inactive' }}">
+                            {{ user.Status.capitalize() if user.Status else 'N/A' }}
+                        </span>
+                    </td>
+                    <td class="actions">
+                        <form action="{{ url_for('toggle_block_user', user_id=user.UserID) }}" method="POST" style="display:inline;">
+                            {% if user.Status == 'blocked' %}
+                                <button type="submit" class="btn btn-secondary btn-sm">Unblock</button>
+                            {% else %}
+                                <button type="submit" class="btn btn-danger btn-sm">Block</button>
+                            {% endif %}
+                        </form>
+                        <form action="{{ url_for('add_bonus', user_id=user.UserID) }}" method="POST" style="display:inline; margin-left: 5px;">
+                            <input type="number" name="bonus_amount" placeholder="Bonus" style="width: 70px; padding: 0.2rem;" required>
+                            <button type="submit" class="btn btn-success btn-sm">Add</button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="8" style="text-align: center;">No users found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

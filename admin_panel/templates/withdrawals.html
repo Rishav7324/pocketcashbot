@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Withdrawals - Admin Panel{% endblock %}
+
+{% block content %}
+    <div class="header-bar">
+        <h2>Manage Withdrawal Requests</h2>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>UPI</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in requests %}
+                <tr>
+                    <td>{{ request.Timestamp }}</td>
+                    <td>{{ request.UserID }}</td>
+                    <td>{{ request.Name }}</td>
+                    <td>{{ request.UPI }}</td>
+                    <td>
+                        <span class="status status-{{ request.Status.lower() if request.Status else 'inactive' }}">
+                            {{ request.Status.capitalize() if request.Status else 'N/A' }}
+                        </span>
+                    </td>
+                    <td class="actions">
+                        {% if request.Status == 'PENDING' %}
+                            <form action="{{ url_for('update_withdrawal_status', row_id=loop.index + 1, status='approved') }}" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                            </form>
+                            <form action="{{ url_for('update_withdrawal_status', row_id=loop.index + 1, status='rejected') }}" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+                            </form>
+                        {% elif request.Status == 'APPROVED' %}
+                             <form action="{{ url_for('update_withdrawal_status', row_id=loop.index + 1, status='paid') }}" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-primary btn-sm">Mark as Paid</button>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6" style="text-align: center;">No withdrawal requests found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
